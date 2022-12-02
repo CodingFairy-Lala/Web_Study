@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어관련</title>
+</head>
+<body>
+    <h1>미디어관련</h1>
+    <h2>오디오</h2>
+    <!-- 
+        autoplay 자동재생
+        loop 반복재생
+        muted 음소거
+        preload = auto|metadata|none 미리 로딩 여부
+     -->
+    <audio src="../sample/audio/major.mp3" controls="controls"></audio>  <!-- 속성과 속성명이 같아서 "controls" 생략가능 -->
+    <audio src="../sample/audio/major.mp3" autoplay loop muted controls>
+        <!-- fallback 메세기 : audio태그 사용불가시 보여질 메세지 -->
+        현재 브라우저는 audio태그를 지원하지 않습니다. 최신 브라우저로 업데이트 하세요.
+    </audio>
+    
+    <audio controls>
+        <source src="../sample/audio/major.mp3" type="audio/mpeg">
+        현재 브라우저는 audio태그를 지원하지 않습니다. 최신 브라우저로 업데이트 하세요.
+    </audio>
+
+    <h2>비디오</h2>
+    <video src="../sample/video/small.mp4" controls poster="../sample/image/hyunta.jpg">
+        현재 브라우저는 video태그를 지원하지 않습니다. 최신 브라우저로 업데이트 하세요.
+    </video>
+    
+    <!-- 
+        웹브라우저는 mp4/webm/ogg 순으로 사용, 모바일부라우저는 mp4/3gp 순으로 사용
+    -->
+    <video controls width="300px" height="300px">
+        <source src="../sample/video/small.mp4" type="video/mp4">
+        <source src="../sample/video/small.mp4" type="video/webm">
+        <source src="../sample/video/small.mp4" type="video/ogg">
+        현재 브라우저는 video태그를 지원하지 않습니다. 최신 브라우저로 업데이트 하세요.
+    </video>
+
+    <h2>외부소스</h2>
+    <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/jEdfjuG0Fx4" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</body>
+</html>

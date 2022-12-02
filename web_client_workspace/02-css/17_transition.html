@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>transition</h1>
+    <div class="box">
+
+    </div>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+            border: 2px solid #000;
+            margin: auto;
+            /* transition-duration: 2s;
+            transition-property: all;
+            transition-delay: .3s;
+            transition-timing-function: ease-in; */
+
+            /* property duration timing-function delay */
+            transition: all 2s ease-out .5s;
+        }
+        .box:hover {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transform: rotate(45deg);
+        }
+    </style>
+
+    <h2>Card 예제</h2>
+    <!-- div.card>h1+h2+p -->
+    <div class="card">
+        <h1>Hello world</h1>
+        <h2 class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        <p class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis reprehenderit doloribus animi iusto maiores, distinctio dolores, voluptatum suscipit harum voluptates quas nobis tempore ea et incidunt eius quos possimus consequuntur?</p>
+    </div>
+    <div class="card">
+        <h1>Hello world</h1>
+        <h2 class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        <p class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis reprehenderit doloribus animi iusto maiores, distinctio dolores, voluptatum suscipit harum voluptates quas nobis tempore ea et incidunt eius quos possimus consequuntur?</p>
+    </div>
+    <div class="card">
+        <h1>Hello world</h1>
+        <h2 class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        <p class="transition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis reprehenderit doloribus animi iusto maiores, distinctio dolores, voluptatum suscipit harum voluptates quas nobis tempore ea et incidunt eius quos possimus consequuntur?</p>
+    </div>
+    <style>
+        .card {
+            width: 380px;
+            height: 380px;
+            margin: 10px;
+            padding: 30px;
+            background-color: #9af;
+            color: #fff;
+            box-shadow: 1px 35px 77px -17px rgb(183, 183, 183);
+            cursor: pointer;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .card:hover {
+            box-shadow: 1px 35px 77px -17px gray;
+        }
+        .card h1, .card h2 {
+            text-shadow: 2px 2px 10px gray;
+        }
+        .card h2 {
+            transform: translate(-320px, 0);
+        }
+        .card p {
+            transform: translate(320px, 0);
+        }
+        .transition {
+            opacity: .3;
+            transition: .7s;
+        }
+        .card:hover .transition {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    </style>
+
+    <h2>이미지확대</h2>
+    <div id="container">
+        <!-- (.img-wrap>img)*4 -->
+        <div class="img-wrap"><img src="../sample/image/flower1.PNG" alt=""></div>
+        <div class="img-wrap"><img src="../sample/image/flower2.PNG" alt=""></div>
+        <div class="img-wrap"><img src="../sample/image/flower3.PNG" alt=""></div>
+        <div class="img-wrap"><img src="../sample/image/flower4.PNG" alt=""></div>
+    </div>
+    <style>
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .img-wrap {
+            width: 300px;
+            height: 170px;
+            border: 1px solid lightskyblue;
+            padding: 3px;
+            overflow: hidden;
+        }
+        .img-wrap img {
+            width: 100%;
+            transition-duration: .7s;
+        }
+        .img-wrap:hover img {
+            transform: scale(1.3);
+        }
+
+
+    </style>
+
+    
+</body>
+</html>

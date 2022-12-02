@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box model</title>
+</head>
+<body>
+    <h1>Box model</h1>
+
+    <!-- 
+        margin - border와 다른 요소(부모요소)와의 여백
+            border
+                padding - content와 border사이의 여백
+                    content
+     -->
+
+    <div class="box">
+        안녕
+    </div>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 3px solid #000;
+            /* padding: 10px 10px 10px 10px; */
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+    <div class="wrap">
+        <span>안녕</span>
+    </div>
+
+    <style>
+        .wrap {
+            border: 3px solid #000;
+        }
+        .wrap span {
+            /* inline요소는 width/height 적용불가 */
+            /* width: 200px;
+            height: 200px; */
+            background-color: beige;
+            border: 3px solid red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+
+    <h2>margin 겹침현상</h2>
+    <!-- margin collase -->
+    <div class="test box1"></div>
+    <div class="test box2"></div>
+    <style>
+        .test {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #000;
+        }
+    /* margin 범위가 겹칠 경우, 큰쪽 값이 적용된다. */
+    .box1 {
+        margin-bottom: 20px;
+    }
+    .box2 {
+        margin-top: 30px;
+    }
+
+</style>
+
+
+
+</body>
+</html>

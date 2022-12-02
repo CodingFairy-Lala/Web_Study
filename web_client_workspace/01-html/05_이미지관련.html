@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지관련</title>
+</head>
+<body>
+    <h1>이미지관련</h1>
+    <h2>절대경로</h2>
+    <img src="/Users/hera/Desktop/Workspaces/web_client_workspace/sample/image/city1.PNG" style="width: 500px"/>
+    <img src="http://192.168.0.9:5500/sample/image/city1.PNG" style="width: 500px"/>
+    <img src="/sample/image/city1.PNG" style="width: 500px"/> <!-- 현재 url에서 유추가능하므로 ip:port 생략가능 -->
+    <!-- 
+       상대경로 : 현제페이지 기준으로 작성
+       절대경로 : 
+            - file:// - 루트디렉토리(윈도우 C:\, 맥&리눅스 /) 기준으로 작성 
+            - http:// - host:port/ 경로가 루트디렉토리로 처리
+    -->
+
+    <h2>상대경로</h2>
+    <!-- 
+        C:\, /, http://localhost 로 시작하지 않는 모든 경로.
+
+        ./ 현재 디렉토리 (생략가능))
+        ../ 부모 디렉토리
+
+     -->
+    <img src="../sample/image/flower1.PNG" style="width: 500px"/>
+    
+    <h2>alt</h2>
+    <!-- 
+        alternate
+        - 해당 이미지를 못찾았을때 대체할 텍스트
+        - 화면낭독기 Screen Reader가 이미지를 해석할 수 없으므로, 대체 택스트를 읽음.
+    -->
+    <img src="../존재하지않는이미지.jpg" alt="무슨무슨 이미지">
+    <img src="../sample/image/flower1.PNG" alt="분홍색 꽃 사진" style="width: 500px"/>
+    
+    <h2>절대크기</h2>
+    <!-- px, pt -->
+    <!-- div>img*5[style] -->
+    <div>
+        <img src="../sample/image/flower1.PNG" alt="" style="width:200px">
+        <img src="../sample/image/flower2.PNG" alt="" style="width:200px">
+        <img src="../sample/image/flower3.PNG" alt="" style="width:200px">
+        <img src="../sample/image/flower4.PNG" alt="" style="width:200px">
+        <img src="../sample/image/flower5.PNG" alt="" style="width:200px">
+    </div>
+
+<h2>상대크기</h2>
+    <!--  % 부모요소에 대한 상대 크기 -->
+    <div>
+        <img src="../sample/image/flower1.PNG" alt="" style="width:19%">
+        <img src="../sample/image/flower2.PNG" alt="" style="width:19%">
+        <img src="../sample/image/flower3.PNG" alt="" style="width:19%">
+        <img src="../sample/image/flower4.PNG" alt="" style="width:19%">
+        <img src="../sample/image/flower5.PNG" alt="" style="width:19%">
+    </div>
+
+    <h2>이미지 배치</h2>
+    <!-- 
+        float : left, right
+        text-align
+     -->
+     <div>
+        <img src="../sample/image/river1.PNG" alt="" style="width: 300px; float: left; margin: 10px;">
+        <!-- p>lorem*3 -->
+        <p><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique harum voluptatum nam. Minima voluptatum expedita sequi, inventore hic delectus magni fuga error architecto corporis quibusdam aperiam dolorum molestiae. Quo, in.</span><span>Perferendis ipsa sapiente molestiae molestias necessitatibus, neque repudiandae dolorem voluptatem doloremque velit eos odio, quod, magnam in nemo corporis tempore. Numquam, temporibus nam iste deleniti aspernatur quibusdam est et voluptates?</span><span>Voluptatem officiis, fugit doloribus quos soluta esse odit quibusdam magnam, perferendis quae amet perspiciatis eligendi corporis suscipit deserunt rerum! Ea consequuntur quo sequi quas voluptatum quis necessitatibus laudantium veniam praesentium?</span></p>
+     </div>
+
+     <div>
+        <img src="../sample/image/river2.PNG" alt="" style="width: 300px; float: right; margin: 10px;">
+        <!-- p>lorem*3 -->
+        <p><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique harum voluptatum nam. Minima voluptatum expedita sequi, inventore hic delectus magni fuga error architecto corporis quibusdam aperiam dolorum molestiae. Quo, in.</span><span>Perferendis ipsa sapiente molestiae molestias necessitatibus, neque repudiandae dolorem voluptatem doloremque velit eos odio, quod, magnam in nemo corporis tempore. Numquam, temporibus nam iste deleniti aspernatur quibusdam est et voluptates?</span><span>Voluptatem officiis, fugit doloribus quos soluta esse odit quibusdam magnam, perferendis quae amet perspiciatis eligendi corporis suscipit deserunt rerum! Ea consequuntur quo sequi quas voluptatum quis necessitatibus laudantium veniam praesentium?</span></p>
+     </div>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display</title>
+</head>
+<body>
+    <h1>display</h1>
+    <!-- div.box{div$}*3 -->
+    <div class="box inline">div1</div>
+    <div class="box inline">div2</div>
+    <div class="box inline">div3</div>
+    <hr>
+    <!-- span.box{span$}*3 -->
+    <span class="box block">span1</span>
+    <span class="box block">span2</span>
+    <span class="box block">span3</span>
+    <hr>
+    <div class="box inline-block">div1</div>
+    <div class="box inline-block">div2</div>
+    <div class="box inline-block">div3</div>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightcyan;
+            border: 3px solid #000;
+        }
+        .inline {
+            display: inline;
+        }
+        .block {
+            display: block;
+        }
+        .inline-block {
+            display: inline-block;
+        }
+    </style>
+
+    <h2>숨김처리</h2>
+    <div class="box display-none"></div>
+    <hr>
+    <div class="box visibility-hidden"></div>
+    <hr>
+    <div class="box opacity-0"></div>
+
+    <style>
+        /* 요소영역도 사라짐 */
+        .display-none {display: none;}
+        /* 요소영역은 유지하면서 사라짐 */
+        .visibility-hidden {visibility: hidden;}
+        .visibility-hidden:hover {visibility: visible;}
+        /* 요소영역은 유지하면서 투명처리 (사라진게 아님) */
+        .opacity-0 {opacity: 0;}
+        .opacity-0:hover {opacity: 1;}
+
+    </style>
+    
+
+</body>
+</html>

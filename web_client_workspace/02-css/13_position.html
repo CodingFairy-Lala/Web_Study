@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>position</title>
+</head>
+<body>
+    <h1>position</h1>
+    <!-- 
+        문서 내에 요소배치위ㅘ 관련된 속성
+        - static 기본값. 문서에 정의된 순서대로 화면배치. offset값 무시
+        - relative 문서에 정의된 순서대로 화면배치. offset값 적용
+        - absolute 가장 가까운 position:static이 아닌 부모 기준으로 offset값 적용
+        - fixed 브라우저의 viewport기분으로 offset 적용
+     -->
+
+    <h2>static</h2>
+     <!-- .outer>.first+.second+.third -->
+     <div class="outer">
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+     </div>
+    <style>
+        .outer {background-color: lightgray;}
+        .first {
+            background-color: thistle;
+            width: 300px;
+            height: 300px;
+        }
+        .second {
+            background-color: violet;
+            width: 200px;
+            height: 200px;
+            top: 50px;
+            left: 50px;
+        }
+        .third {
+            background-color: purple;
+            width: 100px;
+            height: 100px;
+            top: 100px;
+            left: 100px;
+        }
+        .relative {
+            position: relative;
+        }
+        .absolute {
+            position: absolute;
+        }
+        .fourth {
+            background-color: palevioletred;
+            width: 100px;
+            height: 100px;
+            /* top: 100px;
+            left: 100px; */
+            bottom: 50px;
+            right: 50px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 20px 10px gray;
+        }
+            .fixed {
+            position: fixed;
+        }
+        
+
+    </style>
+
+    <br><br><br><br><br><hr><br><br><br><br><br>
+
+    <h2>relative</h2>
+    <div class="outer">
+        <div class="first"></div>
+        <div class="second relative"></div>
+        <div class="third relative"></div>
+     </div>
+     <br><br><br><br><br><hr><br><br><br><br><br>
+
+    <h2>absolute</h2>
+    <div class="outer relative">
+        <div class="first"></div>
+        <div class="second absolute"></div>
+        <div class="third absolute"></div>
+     </div>
+
+    <h2>fixed</h2>
+        <div class="fourth fixed"></div>
+     </div>
+
+    <h2>z-index</h2>
+    <!-- 
+        z축 기준으로 요소를 배치하는 속성. 값이 홀수로 앞에 배치됨
+        position:static 에서는 작동하지 않는다.
+        z-index가 값다면 문서상 나중요소가 화면 위에 배치.
+     -->
+     <!-- .z.test${Z$}*3 -->
+     <div class="wrap">
+         <div class="z test1">Z1</div>
+         <div class="z test2">Z2</div>
+         <div class="z test3">Z3</div>
+
+     </div>
+     <style>
+        .wrap {
+            position: absolute;
+        }
+        .z {
+            width: 150px;
+            height: 100px;
+            border: 1px solid #000;
+            position: absolute;
+        }
+        .test1{
+            background-color: fuchsia;
+            z-index: 3;
+        }
+        .test2 {
+            background-color: hotpink;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+        .test3 {
+            background-color: pink;
+            top: 40px;
+            left: 40px;
+            z-index: 1;
+        }
+
+
+     </style>
+
+
+
+</body>
+</html>

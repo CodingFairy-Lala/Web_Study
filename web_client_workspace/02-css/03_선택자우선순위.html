@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <!-- 
+        !important
+        inline작성
+        a ID
+        b 클래스/속성/가상선택자
+        c 태그/가상요소선택자
+    -->
+
+
+    <!-- div#box.foo[title=box] -->
+    <div id="box" class="foo" title="box" style="width: 200px; height:200px; border:1px solid #000; background-color: blue;"></div>
+    <style>
+        div {background-color: red;}
+        [title=box] {background-color: orange;}
+        .foo[title=box] {background-color: yellow;}
+        #box {background-color: green;}
+
+    </style>
+
+
+
+    
+</body>
+</html>

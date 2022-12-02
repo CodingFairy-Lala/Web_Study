@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>링크관련</title>
+</head>
+<body>
+    <h1>링크관련</h1>
+    <!-- 
+        html의 핵심적인 기능으로 페이지와 페이지를 연결할 수 있다.
+     -->
+     <h2>이미지 링크</h2>
+     <!-- 
+        target속성
+        _self : 현재페이지(기본값)
+        _blank : 새 탭으로 열기
+        name : 윈도우 이름
+      -->
+     <a href="http://w3schools.com" target="_blank">
+        <img src="../sample/image/flying_pig.jpg" alt="" style="width: 50%">
+     </a>
+
+     <h2>이미지 맵</h2>
+     <!-- 
+        하나의 이미지 안에 여러 링크를 작성.
+        직사각형, 원, 다각형 등을 설정 가능
+      -->
+    <img src="../sample/image/city1.PNG" alt="" width="500px" height="300px" usemap="#imgmap">
+    <img src="test.jpg" alt="" width="100px" height="100px">
+    <map name="imgmap">
+        <area shape="rect" coords="0,0,250,300" href="https://google.com" alt="구글로 이동">
+        <area shape="rect" coords="250,0,500,300" href="https://naver.com" alt="네이버로 이동">
+    </map>
+
+    <h2>북마킹</h2>
+    <ul>
+        <li><a href="#title1">제목1</a></li>
+        <li><a href="#title2">제목2</a></li>
+        <li><a href="#title3">제목3</a></li>
+        <li><a href="#:~:text=magnam%20maiores%20accusantium">하이라이팅 링크</a></li>
+    </ul>
+    <!-- div>(h3{제목$}+(p>lorem*5))*3 -->
+    <div>
+        <h3 id="title1">제목1</h3>
+        <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur enim corporis iusto velit, sapiente modi nisi expedita, eligendi consequatur commodi atque earum, nesciunt officiis dicta quasi assumenda? Impedit, error ipsam!</span><span>Maxime quidem, nesciunt, iste saepe dignissimos provident pariatur tenetur quis numquam aliquam obcaecati cupiditate, eaque id! Praesentium officia impedit sunt dolorum? Sunt sit obcaecati officia at rerum repudiandae fugiat consequuntur?</span><span>Fugit unde obcaecati quia aliquam eveniet iusto eligendi voluptatibus saepe incidunt architecto. Nemo, voluptate. Unde consequatur quod, inventore harum error dolorum labore ab rerum blanditiis aliquid pariatur minima. Ipsa, nihil!</span><span>Soluta reprehenderit, ipsum iure architecto et aliquid quas ex ea possimus accusamus dignissimos, laboriosam ut, quod similique maiores pariatur dolorum veniam tempora officia harum modi est. Harum officiis veritatis porro!</span><span>Exercitationem nesciunt dolor dolore blanditiis cum, ab pariatur, nulla quae unde, sit architecto. Qui quasi hic, explicabo ad unde, voluptatibus necessitatibus eligendi, magnam maiores accusantium maxime nesciunt dolorum nihil! Cupiditate?</span></p>
+        <h3 id="title2">제목2</h3>
+        <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto officia dolore, dicta, quis minima in odio excepturi nostrum corrupti amet quam deleniti porro impedit. Ut quaerat optio amet error sit!</span><span>Tenetur dolores repellat tempore commodi ea amet quas. Dolorem est rerum consequatur unde quam quos? Neque autem aperiam excepturi, cupiditate facilis veniam, minima, ipsum nesciunt tenetur ut fugit tempora vero?</span><span>Laboriosam cum, unde animi aliquid vel perferendis culpa nesciunt aliquam quisquam ea consequuntur officia expedita, odit, repellendus asperiores at. Mollitia repellat fugiat, harum odio soluta eos est quidem culpa similique?</span><span>Recusandae animi esse explicabo suscipit voluptatem reiciendis, pariatur itaque ex tempore magni illo delectus repellat! Facilis tempora, cum dolores tempore omnis ea quas sequi eveniet. Numquam voluptatum sequi neque earum?</span><span>Voluptas, sint consequatur sunt, dolorum mollitia eaque asperiores veniam similique dolorem reiciendis eveniet repellat nemo molestiae cumque repellendus ipsum, nobis aspernatur aperiam veritatis provident! Officia repellat quos esse placeat ab.</span></p>
+        <h3 id="title3">제목3</h3>
+        <p><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. In dignissimos asperiores amet harum voluptatum tempore vitae repellendus, illo, fugiat eveniet atque omnis quis magni fuga quos dolorum possimus sequi ad.</span><span>Molestias culpa praesentium natus consequatur laboriosam eos atque ratione doloremque ipsa iusto esse earum quod blanditiis accusamus veniam consectetur eaque eius excepturi quaerat, perferendis non officiis et totam cupiditate? Atque.</span><span>Possimus cupiditate obcaecati quisquam tenetur iste voluptate velit ut eveniet, nemo alias. Eum quidem in sequi expedita placeat deserunt at ipsam, minima tenetur, quod labore voluptatibus, provident non perspiciatis dolorem!</span><span>Debitis cupiditate esse quas eius ratione facere dolorum sint doloremque consectetur explicabo sunt, atque quisquam placeat dolorem, perspiciatis necessitatibus unde asperiores. Quas assumenda dicta quia possimus saepe maxime, ex aliquid.</span><span>Totam molestias tempora beatae optio odit eveniet atque blanditiis impedit natus maiores. Et, aperiam, dolor recusandae esse, alias at architecto amet autem nobis laudantium consequuntur! Distinctio mollitia quis soluta laudantium?</span></p>
+    </div>
+
+    <ul>
+        <li><a href="#top">맨 위로</a></li>
+    </ul>
+
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>텍스트관련</title>
+</head>
+<body>
+    <h1>텍스트관련</h1>
+    <!-- div#wrap>ul>li -->
+    <div id="wrap">
+        <ul>
+            <li>안녕</li>
+            <li>잘가</li>
+            <li>여보세요</li>
+            <li><a href="#">네이버로 이동</a></li>
+        </ul>
+    </div>
+    <style>
+        /* text-decoration : text-decoration-line text-decoration-color text-decoration-style */
+
+        #wrap li:first-of-type {text-decoration: underline red solid}
+        #wrap li:nth-of-type(2) {text-decoration: line-through red wavy}
+        #wrap li:nth-of-type(3) {text-decoration: underline red dotted}
+        #wrap li:last-of-type a {text-decoration: none}
+        #wrap li:last-of-type a:hover {text-decoration: underline}
+    </style>
+
+    <div id="wrap2">
+        <h2>안녕</h2>
+    </div>
+    <style>
+        /* text-shadow : 가로offset 세로offset 번짐정도 컬러 */
+        #wrap2 h2 {text-shadow : 3px 3px 7px gray;}
+
+    </style>
+
+    <div id="wrap3">
+        <!-- (span#shadow$.shadow-group{HTML5})*4 -->
+        <span id="shadow1" class="shadow-group">HTML5</span><br>
+        <span id="shadow2" class="shadow-group">HTML5</span><br>
+        <span id="shadow3" class="shadow-group">HTML5</span><br>
+        <span id="shadow4" class="shadow-group">HTML5</span>
+    </div>
+    <style>
+        /* text-shadow : 가로offset 세로offset 번짐정도 컬러 */
+        #wrap3 {font-size: 80px; font-weight : bold; background-color: black;}
+        #wrap3 :first-of-type {color: orangered; text-shadow : 2px 2px 0px yellow;}
+        #wrap3 :nth-of-type(2) {color: white; text-shadow : 2px 0px 14px lightgray;}
+        #wrap3 :nth-of-type(3) {color: white; text-shadow : 2px 0px 13px greenyellow;}
+        #wrap3 :nth-of-type(4) {color: black; text-shadow : 0px -5px 5px yellow, 0px -8px 8px #fd3, 0px -10px 8px orangered, 0px -19px 15px red;}
+    </style>
+
+    <!-- div#wrap4>p>lorem -->
+    <div id="wrap4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eveniet velit expedita illo sapiente ipsam id accusantium aut amet error dolore, quod optio tenetur nobis quibusdam quae suscipit odit architecto.</p>
+        <p>국가안전보장회의는 대통령이 주재한다. 모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다. 정당의 목적이나 활동이 민주적 기본질서에 위배될 때에는 정부는 헌법재판소에 그 해산을 제소할 수 있고, 정당은 헌법재판소의 심판에 의하여 해산된다.</p>
+    </div>
+    <style>
+        #wrap4 {
+            border : 2px solid #000;
+            margin-top : 30px;
+            overflow: hidden;  /* hidden | scroll */
+        }
+        #wrap4 p {
+            white-space : nowrap; /* 줄바꿈없음 */
+        }
+    </style>
+
+
+</body>
+</html>

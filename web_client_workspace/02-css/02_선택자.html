@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <style>
+        /* css 주석 */
+
+        /* 태그 선택자 */
+        /* li {background-color :beige; } */
+
+        /* 아이디 선택자 */
+        /* #myId2 {background-color:azure;} */
+
+        /* 클래스 선택자 */
+        /* .group1 {background-color: darkgray;}
+        .group1.group2 {color: chocolate;} */
+
+        /* 속성 선택자 */
+        /* [title] {background-color: deeppink;} */
+        /* [title=안녕3] {background-color:burlywood;} */
+
+        /* 혼용 가능 */
+        /* li.group1[title] {background-color: rebeccapurple;} */
+
+        /* 복수개 */
+        /* #myId3, .group2 {background-color: thistle;} */
+
+
+
+    </style>
+</head>
+<body>
+    <h1 class="group1">선택자</h1>
+    <!-- css selector -->
+    <!-- ul>li#myId${안녕$}*5 -->
+
+    <ul>
+        <li id="myId1" class="group1">안녕1</li>
+        <li id="myId2" class="group2" title="안녕2">안녕2</li>
+        <li id="myId3" class="group1" title="안녕3">안녕3</li>
+        <li id="myId4" class="group2">안녕4</li>
+        <li id="myId5" class="group1 group2">안녕5</li>
+    </ul>
+
+    <h2>자식 | 후손 선택자</h2>
+    <div id="parent">
+        <h4>h4 안녕</h4>
+        <ul>
+            <li>li 여보세요</li>
+            <li>li 밥먹었니?</li>
+        </ul>
+        <div id="child">
+            <h4>h4 잘가</h4>
+            <ul>
+                <li>li 여보세요</li>
+                <li>li 거기 어디니?</li>
+            </ul>
+        </div>
+    </div>
+    <style>
+    /* 
+        자식선택자 : 직계자식 태그
+        후손선택자 
+    */
+    div#parent > h4 {color: tomato;}
+    /* div#parent h4 {color: tomato;} */
+    div#parent > div#child li {color:cornflowerblue;}
+    /* div#child li {color:cornflowerblue;} */
+    </style>
+
+    <h2>형제 선택자</h2>
+    <!-- div>p#p${안녕, p$}*5 -->
+    <div>
+        <p id="p1">안녕, p1</p>
+        <p id="p2">안녕, p2</p>
+        <p id="p3">안녕, p3</p>
+        <p id="p4">안녕, p4</p>
+        <p id="p5">안녕, p5</p>
+        <pre id="p5">안녕, p5</pre>
+    </div>
+    <style>
+    /* 형제 선택자 - 다음(next) 방향으로만 작동 */
+    /* 다음 형제요소 하나 */
+    /* p#p2 + p {background-color: hotpink; color:thistle;} */
+
+    /* 다음 형제요소 모두 */
+    p#p2, p#p2 ~ * {background-color: palegoldenrod;}
+    </style>
+
+    <h2>속성 선택자</h2>
+    <div>
+        <input type="text"><br>
+        <input type="text" name="username"><br>
+        <input type="email" name="useremail"><br>
+        <input type="text" name="petname"><br>
+        <input type="text" name="userage"><br>
+    </div>
+    <style>
+        /* 속성 선택자 */
+        /* input[name] {background-color: turquoise;} */
+        /* input[name=username] {background-color: turquoise;} */
+        /* input[name^=user] {background-color: turquoise;} */
+        /* input[name$=name] {background-color: turquoise;} */
+        /* input[name*=n] {background-color: turquoise;} */
+    </style>
+
+    <h2>가상 선택자</h2>
+    <!-- div>(p#test$>lorem)*2 -->
+    <div>
+        <p id="test1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi, libero officia accusantium quidem similique corrupti quis odit ad, repellendus possimus aliquid, temporibus amet minima iure? Molestiae dolore facilis nobis dicta!</p>
+        <p id="test2">Hic illo maxime repellat saepe rem consectetur, aut velit nisi dolore doloremque illum veritatis soluta suscipit sequi architecto nesciunt debitis. Quidem fugit eius optio inventore natus! Blanditiis sapiente dignissimos repellat.</p>
+    </div>
+    <div>
+        <a id="link" href="http://www.innerbody.com/htm/body.html">http://www.innerbody.com/htm/body.html</a>
+    </div>
+    <div>
+        <input type="text" name="memberName" id="memberName" placeholder="회원명을 작성하세요."> <br>
+        <input type="checkbox" name="fruit" id="apple"><label for="apple">사과</label>
+        <input type="checkbox" name="fruit" id="banana"><label for="apple">바나나</label>
+        <input type="checkbox" name="fruit" id="peach"><label for="apple">복숭아</label>
+
+
+    </div>
+
+    <style>
+        /* 가상선택자 */
+        /* :active - 클릭시 */
+        p#test1:active {background-color: tomato; color:white;}
+        
+        /* :hover - 마우스 오버시 */
+        p#test2:hover {background-color:darkgoldenrod; color:white;}
+        
+        /* a 태그 */
+        /* 
+            :link - 방문 전
+            :visited - 방문 후
+            :active - 클릭시
+            :hover - 마우스 오버시
+        */
+        a#link:link {color: aqua;}
+        a#link:visited {color: tomato;}
+        a#link:active {color: greenyellow;}
+        a#link:hover {color: lightsalmon;}
+    
+        /* :focus input등 입력 가능한 태그 */
+        input[name=memberName]:focus {background-color:lightslategray}
+        /* :checked 체크된 상태인 경우 */
+        input[type=checkbox]:checked {width:50px; height:50px}
+        input[type=checkbox]:checked + label {font-size: 40px;}
+    </style>
+
+    <h2>위치관련 가상 선택자</h2>
+    <div id="foo">
+        <p>가을</p>
+        <p>가을</p>
+        <p>가을</p>
+        <p>가을</p>
+        <p>가을</p>
+        <ul>
+            <li>겨울1</li>
+            <li>겨울2</li>
+            <li>겨울3</li>
+            <li>겨울4</li>
+            <li>겨울5</li>
+        </ul>
+    </div>
+    <style>
+        /* div#foo :first-child {background-color: yellowgreen;} */
+        /* div#foo :last-child {background-color: yellowgreen;} */
+        /* div#foo :nth-child(2) {background-color: yellowgreen;} */
+        /* div#foo :nth-child(2n) {background-color: yellowgreen;} */
+        /* div#foo :nth-child(2n+1) {background-color: yellowgreen;} */
+
+        /* type계열 */
+        /* div#foo p:first-of-type {background-color: tomato;} */
+        /* div#foo p:last-of-type {background-color: tomato;} */
+        /* div#foo p:nth-of-type(2) {background-color: tomato;} */
+    </style>
+
+    <h2>가상요소선택자</h2>
+    <ul id="prices">
+        <li>1000</li>
+        <li>2000</li>
+        <li>3000</li>
+    </ul>
+    <style>
+        #prices li::before {
+            content : ' ';
+        }
+        #prices li::after {
+            content : '원';
+        }
+    </style>
+
+
+
+    <h2>기타선택자</h2>
+    <style>
+        /* 부정 선택자 */
+        /* div#foo :not(p:first-of-type) {background-color: lightskyblue;} */
+
+        /* 최상위 선택자 */
+        :root {background-color: lightslategrey;}
+    </style>
+
+
+</body>
+</html>

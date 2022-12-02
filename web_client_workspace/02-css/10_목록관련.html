@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목록 관련</title>
+</head>
+<body>
+    <h1>목록 관련</h1>
+    <!-- ul.menu>(li>a)*4 -->
+    <nav>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Html</a></li>
+            <li><a href="#">Css</a></li>
+            <li><a href="#">Javascript</a></li>
+            <li><a href="#">jQuery</a></li>
+        </ul>
+    </nav>
+    <style>
+        nav {
+            width: 80vw;
+            margin: 0 auto;
+        }
+        ul.menu {
+            padding: 0px;
+            list-style: none;
+        }
+        ul.menu li {
+            float: left;
+            width: 6em;
+            height: 2.5em;
+            text-align: center;
+            /* border: 1px solid #000; */
+            background-color: #c9c9c9;
+            border-right: #818181;
+            box-shadow: 1px 1px 8px #bbb;
+        }
+        ul.menu li:first-child {
+            border-radius: .5em 0 0 .5em;
+        }
+        ul.menu li:last-child {
+            border-radius: 0em .5em .5em 0;
+            border: none;
+        }
+        ul.menu li a {
+            /* inline요소를 block요소로 설정 */
+            display: block;
+            padding-top: 7px;
+            text-decoration: none;
+            color: #292929;
+        }
+        ul.menu li:hover a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+
+    </style>
+
+
+    
+</body>
+</html>

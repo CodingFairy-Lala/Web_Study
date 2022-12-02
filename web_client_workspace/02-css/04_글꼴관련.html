@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글꼴관련</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>글꼴관련</h1>
+    <!-- div>p#font${가나다라마바사 ABCDEFG hijklmn 1234567890}*3 -->
+    <div>
+        <p id="font1">가나다라마바사 ABCDEFG hijklmn 1234567890</p>
+        <p id="font2">가나다라마바사 ABCDEFG hijklmn 1234567890</p>
+        <p id="font3">가나다라마바사 ABCDEFG hijklmn 1234567890</p>
+    </div>
+    <style>
+        p {font-size: 32px;}
+        /* font-family :  */
+        p#font1 {font-family: 'Do Hyeon', sans-serif;}
+        p#font2 {font-family: 'Nanum Myeongjo', serif;}
+        p#font3 {font-family: 'Nanum Pen Script', cursive;}
+
+    </style>
+
+    <h2>글차크기 | 글자굵기</h2>
+    <!-- div>ul>li#size${안녕}*3 -->
+    <div style="font-size:32px">
+        <ul>
+            <li id="size1">안녕</li>
+            <li id="size2">안녕</li>
+            <li id="size3">안녕</li>
+        </ul>
+    </div>
+    <style>
+        /* 기본 글자크기 : 16px | 기본 굵기 : 400 */
+        li#size1 {font-size: 32px; font-weight: 700;} /* 절대크기 */
+        li#size2 {font-size: 2em; font-weight : bold; font-style: italic;}  /* 부모요소 대비 상대크기 */
+        li#size3 {font-size: 200%;} /* 부모요소 대비 상대크기 */
+    </style>
+    
+    <h2>font</h2>
+    <!-- 모아쓰기 속성 font-family, font-size, font-weight, font-style, line-height -->
+    <div id="font-test">
+        <ul>
+            <li>가나다 ABC xyz 12345</li>
+            <li>가나다 ABC xyz 12345</li>
+        </ul>
+    </div>
+    <style>
+    /* font-style font-weight font-size/line-height font-family */
+        #font-test li:first-child {font : italic bold 24px/24px 'Do Hyun', san-serif;}
+        #font-test li:last-child {font : italic bold 24px/24px 'Nanum Myeongjo', san-serif;}
+    </style>
+
+
+
+
+
+</body>
+</html>

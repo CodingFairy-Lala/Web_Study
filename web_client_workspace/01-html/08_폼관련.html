@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼관련</title>
+</head>
+<body>
+    <h1>폼관련</h1>
+    <!-- 
+        form 태그 : html에서 사용자가 입력할 수 있는 양식을 제공하는 태그
+            자식 input태그를 여러개 제공 가능
+            
+            -action속성 : 폼을 제출할 서버 url. 비어있을 시 현재 페이지로 제출
+            -method속성 : http전송방식 GET(기본값)/POST
+                -GET 사용자 입력값을 url에 직렬화
+                -POST 사용자 입력값을 message body에 작성. (url에 노출되지 않음.)
+    -->
+    <form action="submit.html" method="GET">
+        <label for="username">아이디 : </label>
+        <input type="text" id="username" name="usernameeee">
+        <br>
+        <label for="password">비밀번호 : </label>
+        <input type="password" id="password" name="passwordddd">
+        <br>
+        <input type="text" placeholder="abcde"> <!-- name 속성이 없다면 폼전송 되지 않는다. -->
+        <input type="submit" value="로그인">
+    </form>
+
+    <br><br><br>
+    <form action="" method="GET">
+        <!-- 입력값 그룹핑 용도 -->
+        <fieldset>
+            <legend>text 관련</legend>
+            <!-- label+input -->
+            <label for="userId">아이디 : </label><input type="text" name="userId" id="userId" placeholder="아이디 입력" maxlength="8" size="10" minlength="4" required>
+            <br>
+            <label for="userPw">비밀번호 : </label>
+            <!-- input:p -->
+            <input type="password" name="userPw" id="userPw" value="1234" placeholder="비밀번호 입력" >
+            <br>
+            <label for="search">검색어 : </label>
+            <!-- input:search -->
+            <!-- input[type=search] -->
+            <input type="search" name="search" id="search">
+            <br>
+            <!-- label[for=userEmail]+input:email -->
+            <label for="userEmail">이메일 : </label>
+            <input type="email" name="userEmail" id="userEmail"> <!-- 이메일 형식 유효성 검사 -->
+            <br>
+            <!-- label[for=userTel]+input:tel -->
+            <label for="userTel">전화번호 : </label>
+            <input type="tel" name="userTel" id="userTel" placeholder="-없이 숫자만 작성"> <!-- 모바일로 접속시 숫자 키패드 제공 -->
+            <br>
+            <label for="homepage">홈페이지 : </label>
+            <input type="url" name="homepage" id="homepage">
+            <br>
+            <label for="memo">메모 : </label>
+            <textarea name="memo" id="memo" cols="30" rows="10" style="resize: none;"></textarea>
+
+        </fieldset>
+        <input type="submit" value="제출">
+    </form>
+
+    <form action="">
+        <fieldset>
+            <legend>숫자관련</legend>
+            <label for="amount">수량 : </label>
+            <input type="number" name="amount" id="amount" max="10" min="1" step="2">
+            <br>
+
+            <label for="score">점수</label>
+            <input type="range" name="score" id="score" min="0" max="100" step="5" value="50"
+                oninput="console.log(this.value);">
+            
+        </fieldset>
+        <button type="submit">제출</button>
+    </form>
+
+    <form action="">
+        <fieldset>
+            <legend>날짜/시간관련</legend>
+            <label for="birthday">생일 : </label>
+            <input type="date" name="birthday" id="birthday" value="1999-09-09">
+            <br>
+
+            <label for="time">예약시간</label>
+            <input type="time" name="time" id="time" value="16:43">
+            <br>
+
+            <label for="datetime">일시</label>
+            <input type="datetime-local" name="datetime" id="datetime">
+            <br>
+
+        </fieldset>
+        <button type="submit">제출</button>
+    </form>
+
+    <form action="">
+        <fieldset>
+            <legend>선택관련</legend>
+            <!-- 
+                radio : 택일
+                checkbox : 다중선택
+             -->
+            <div>
+                성별 : 
+                <label for="gender-m">남</label>
+                <input type="radio" name="gender" id="gender-m" value="남">
+                <label for="gender-f">여</label>
+                <input type="radio" name="gender" id="gender-f" value="여">
+            </div>
+            <div>
+                취미 : 
+                <label for="hobby-1">게임</label>
+                <input type="checkbox" name="hobby" id="hobby-1" value="게임">
+                <label for="hobby-2">영화감상</label>
+                <input type="checkbox" name="hobby" id="hobby-2" value="영화감상" checked>
+                <label for="hobby-3">요리</label>
+                <input type="checkbox" name="hobby" id="hobby-3" value="요리">
+            </div>
+            <div>
+                <label for="married">결혼여부 : </label>
+                <input type="checkbox" name="married" id="married">
+            </div>
+            <div>
+                <label for="menu">메뉴 선택 : </label>
+                <select name="menu" id="menu" multiple required>
+                    <option value="">메뉴 선택</option>
+                    <option value="순대국">순대국</option>
+                    <option value="김치찌개">김치찌개</option>
+                    <option value="참치김밥" selected>참치김밥</option>
+                    <option value="돼지갈비">돼지갈비</option>
+                </select>
+            </div>
+            <div>
+                <label for="browser">브라우저 선택</label>
+                <input type="text" name="browser" id="browser" list="browser-list">
+                <datalist id="browser-list"> <!-- 옵션중에 선택할 값이 없으면 직접 입력 가능 -->
+                    <option value="IE">인터넷익스플로러</option>
+                    <option value="Chrome">크롬</option>
+                    <option value="Edge">엣지</option>
+                    <option value="Safari">사파리</option>
+                </datalist>
+            </div>
+        </fieldset>
+        <button type="submit">제출</button>
+    </form>
+
+    <form action="">
+        <fieldset>
+            <legend>기타 태그</legend>
+            <label for="color">선호 색상 : </label>
+            <input type="color" name="color" id="color" value="#f0d0d0" disabled>
+            <br>
+
+            <label for="profile">프로필 이미지 : </label>
+            <input type="file" name="profile" id="profile">
+            <br>
+
+            <label for="hidden">숨김 input : </label>
+            <input type="hidden" name="hidden" value="ㅋㅋㅋ">
+
+
+        </fieldset>
+        <input type="button" value="그냥버튼" onclick="alert('ㅋㅋㅎㅎ')">
+        <input type="reset" value="초기화">
+        <input type="submit" value="제출">
+        <hr>
+        <button type="button" onclick="alert('ㅋㅋㅎㅎ')">그냥버튼</button>
+        <button type="reset">초기화</button>
+        <button type="submit">제출</button> <!-- 버튼 타입 기본값 -->
+        <button>제출</button> 
+    </form> 
+
+</body>
+</html>

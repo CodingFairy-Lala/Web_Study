@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+</head>
+<body>
+    <h1>transform</h1>
+    <!-- 
+        요소이동, 확대/축소, 회전, 비틀기 등의 요소 상태변경을 지원하는 속성
+        - translate
+        - scale
+        - rotate
+        - skew
+     -->
+     <div class="wrap">
+        <img src="../sample/image/flower1.PNG" alt="" class="transform transform1">
+        <hr>
+        <img src="../sample/image/flower2.PNG" alt="" class="transform transform2">
+        <hr>
+        <img src="../sample/image/flower3.PNG" alt="" class="transform transform3">
+
+
+     </div>
+     <style>
+        .wrap {
+            text-align: center;
+        }
+        .wrap img {
+            width: 200px;
+            margin: 100px;
+        }
+        .transform1:hover {
+            transform: translate(50px, 50px);
+        }
+        .transform2:hover {
+            transform: scale(.5, .5);
+        }
+        .transform3:hover {
+            transform: rotate(45deg); /* 각도 degree */
+        }
+     </style>
+
+
+
+</body>
+</html>

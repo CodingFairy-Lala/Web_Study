@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조분해할당</title>
+</head>
+<body>
+    <h1>구조분해할당</h1>
+    <!-- 
+        Destructuring Assignment
+        배열요소나 객체의 속성값을 쉽게 변수에 옮겨담는 문법
+    -->
+    <h2>배열</h2>
+    <button onclick="test1();">실행</button>
+    <button onclick="test2();">매개변수부</button>
+    <script>
+    /**
+     * 배열 구조분해할당
+     */        
+    const test1 = () => {
+        const arr = ['a', 'b', 'c'];
+        // const a = arr[0];
+        // const b = arr[1];
+        // const c = arr[2];
+        const [a, b, c] = arr;
+        console.log(arr, a, b, c);
+
+        const [x, , y] = arr;
+        console.log(x, y);
+
+        // 변수 자리교환
+        let k = 10;
+        let m = 20;
+        [k, m] = [m, k];
+        console.log(k, m);
+
+        // 기본값 지정
+        const [n, o, p = 30] = [10, 20];
+        console.log(n, o, p);
+
+        // 나머지 파라미터
+        const [e, f, ...g] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log(e, f, g); // g는 배열
+        console.log(e, f, ...g);
+
+        // 전개연산자와 구분할 것.
+        // - 좌항 : 변수(공간) 사용하는 곳, 나머지 파라미터. 마지막에 한번만 사용 가능.
+        // - 우항 : 값 사용하는 곳, 전개연산자. 여러번 사용이 가능.
+        const [h, i, ...q] = [...arr, ...g];
+        console.log(h, i, q);
+        console.log(h, i,...q);
+
+    };
+
+    const test2 = () => {
+        const arr = [1, 2, 3];
+        console.log(process(arr)); // a * b + c / d
+        
+        // @실습문제 - 리턴값 구조분해할당
+        // 다음 호출결과, 두 수의 합, 차, 곱, 몫, 나머지 연산결과를 배열에 담아 반환하고, 출력
+        const [sum, sub, mul, div, rem] = calc(10, 3);
+        console.log('합 :', sum);
+        console.log('차 :', sub);
+        console.log('곱 :', mul);
+        console.log('몫 :', div);
+        console.log('나머지 :', rem);
+    };
+    
+    const calc = (a, b) => [a+b, a-b, a*b, a/b, a%b];
+    
+    const process = ([a, b, c, d = 4]) => {
+        console.log(a, b, c, d);
+        return a * b + c / d;
+    };
+
+    </script>
+    <h2>객체</h2>
+    <button onclick="test3();">실행</button>
+
+    <script>
+        /**
+         * 객체 구조분해할당
+         */
+        const test3 = () => {
+            const obj = {
+                a: true,
+                b: '안녕',
+                c: 123
+            }
+            // const a = obj.a;
+            // const b = obj.b;
+            // const c = obj.c;
+            const {a, b, c, d = 100} = obj;
+
+            console.log(a, b, c, d);
+        
+            // 속성명을 변경해 할당하려는 경우
+            const {a : bool, b: str, c: num} = obj;
+            console.log(bool, str, num);
+
+            const user = {
+                id : 'honggd',
+                name : {
+                    firstName : '길동',
+                    familyName : '홍'
+                },
+                sns : ['instagram', 'tiktok', 'twitter']
+            };
+            
+            processId(user);
+            processName(user);
+            processSns(user);
+
+
+            // 나머지파라미터
+            const item = {
+                x : 'ㅋㅋㅋ',
+                y : 'ㅎㅎㅎ',
+                z : {
+                    year : 2022,
+                    month : 12,
+                    date : 2
+                } 
+            };
+
+            const {x, y, ...rest} = item;
+            console.log(x);
+            console.log(y);
+            console.log(rest);
+                    
+        };
+            const processId = ({id}) => {};
+            const processName = ({name: {firstName, familyName}}) => {};
+            const processSns = ({sns: [sns1, sns2]}) => {};// const {id, name, sns} = user;
+
+            // console.log(id, name, sns);
+            const {id, name : {firstName, familyName}, sns : [mainSns, subSns]} = user;
+            console.log(id, firstName, familyName, mainSns, subSns);
+
+            printUserInfo(user); // id:honggd, name:'홍길동', sns:instagram, tiktok
+
+        
+        const printUserInfo = ({id, name: {firstName, familyName}, sns: [mainSns, subSns]}) => {
+            console.log(`id:${id}, name: ${familyName}${firstName}, sns:${mainSns}, ${subSns}`);
+        };
+
+        // 객체를 반환할때는 ()로 감싸주기.
+        const getUser = (id) => ({
+                id : 'honggd',
+                name : {
+                    firstName : '길동',
+                    familyName : '홍'
+                },
+                sns : ['instagram', 'tiktok', 'twitter']
+        });
+        
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
