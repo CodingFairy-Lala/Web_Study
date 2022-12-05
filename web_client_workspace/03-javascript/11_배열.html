@@ -178,7 +178,7 @@
         langs[0] = 'JAVA';
     }
     /**
-     * splice(startInclusive, delCount, newItem1, newItem2, ...)
+     * splice(startInclusive, delCount[, newItem1, newItem2, ...])
      * - startInclusive에서 시작
      * - delCount 삭제할 요소수
      * - newItem1, newItem2, ... start에 끼워넣을 요소..
@@ -315,8 +315,8 @@
     <div id="target">
         <ul></ul>
     </div>
-
     <div>
+        <!-- ul#drink>li*5 -->
         <ul id="drink">
             <li>coffee</li>
             <li>cocktail</li>
@@ -327,30 +327,30 @@
     </div>
 
     <script>
-
+    
     /**
      * @실습문제 - drink
-     * - #drink하위의 음료목록을 읽어와서 대문자로 변환하고, 오름차순 정렬 후 다시 #drink 하위에 li 태그로 추가
+     * - #drink하위의 음료목록을 읽어와서 대문자로 변환하고, 오름차순 정렬후 다시 #drink하위에 li태그로 추가
      */
-    function test15() {
+    function test15(){
         // 배열
-        const list = Array.from(document.querySelectorAll("#drink li")); // [...유사배열]
+        const list = Array.from(document.querySelectorAll("ul#drink li")); // [...유사배열]
         console.log(list);
-        // 텍스트 추출 & 대문자 변환
-        const drinks = list.map(function(li) {
+        // 텍스트추출 & 대문자변환
+        const drinks = list.map(function(li){
             return li.innerText.toUpperCase();
         });
         // 오름차순 정렬
         drinks.sort();
         console.log(drinks);
-        // li태그 처리
-        const wrapper = document.querySelector("#drink");
-        wrapper.innerHTML = "";
-        drinks.forEach(function(drink) {
+        // li태그처리
+        const wrapper = document.querySelector("ul#drink");
+        wrapper.innerHTML = ""; // 초기화
+        drinks.forEach(function(drink){
             wrapper.innerHTML += `<li>${drink}</li>`;
         });
-
     }
+    
 
     /**
      * for문
@@ -365,12 +365,12 @@
         for(let i = 0; i < arr.length; i++)
             console.log(arr[i]);
         
-        // for..in문 : 배열에 대해서 인덱스속성을 가져오기
+        // for..in문 : 배열에 대해서 인덱스속성을 가져오기 (열거속성이 true인 속성만)
         for(let i in arr){
             console.log(i, arr[i]);
         }
 
-        // for..of문 : 배열요소 가져오기
+        // for..of문 : 배열요소 가져오기 (해당객체가 Iterator 상속)
         for(let ch of arr){
             console.log(ch);
         }
@@ -384,82 +384,77 @@
 
     /**
      * map
-     * - 배열의 각 요소별 작업 후 새 요소를 담은 배열 반환
+     * - 배열의 각요소별 작업후 새 요소를 담은 배열 반환
      */
-    function test12(){
+     function test12(){
         const arr = [1, 2, 3]; // => [1, 4, 9]
-        const arr2 = arr.map(function(elem, index, arr) {
+        const arr2 = arr.map(function(elem, index, arr){
             console.log(elem, index, arr);
             return elem * elem;
         });
         console.log(arr);
         console.log(arr2);
 
-        const names = ['홍길동', '신사임당', '세종대왕']; // => ['<li>홍</li>','<li>신</li>','<li>세종</li>]
-        const nameList = names.map(function(name) {
+        const names = ['홍길동', '신사임당', '세종대왕']; // => ['<li>홍</li>', '<li>신</li>', '<li>세종</li>']
+        const nameList = names.map(function(name){
             return `<li>${name}</li>`;
         });
         console.log(nameList);
 
-        nameList.forEach(function(li) {
+        nameList.forEach(function(li){
             document.querySelector("#target ul").innerHTML += li;
         })
-
-
-    }
-
+     }
     /**
      * filter
      * - 각요소별로 콜백함수를 실행해서 true인 요소만 새 배열에 담아 반환
      */
-    function test13(){
-        const nums = [1,2, 3,4, 5,6,7,8,9,10];
-        const evens = nums.filter(function(n, index, arr) {
+     function test13(){
+        const nums = [1,2,3,4,5,6,7,8,9,10];
+        const evens = nums.filter(function(n, index, arr){
             console.log(n, index, arr);
             return n % 2 == 0;
         });
         console.log(evens);
 
-        // 1~100 정수를 담은 배열을 만들고, 31 이하의 3의 배수만 추려내는 filter 함수 사용하기.
-        const numH = [];
-        for(let i = 0; i < 100; i++) {
-            // numH[i] = i+1;
-            numH.push(i+1);
-        }
-        const filteredNumH = numH.filter(function(n, index, arr) {
-            console.log(n, index, arr);
-            return (n % 3 == 0) && n <= 31;
-        });
-
-        console.log(filteredNumH);
-    }
-
+        // 1 ~ 100 정수를 담은 배열을 만들고(push), 31이하의 3의 배수만 추려내는 filter함수 사용하기
+        const arr = [];
+        for(let i = 0; i < 100; i++)
+            arr.push(i + 1);
+        
+        const multipleOf3 = arr.filter(function(n){
+            return n <= 31 && n % 3 == 0;
+        })
+        console.log(multipleOf3);
+     }
     /**
      * reduce
-     * - 모든 요소를 대상으로 특정 작업 후 하나의 값(객체)으로 반환
+     * - 모든 요소를 대상으로 특정작업후 하나의 값(객체)으로 반환
      * - 최대/최소값, 누적합 등의 작업에 적합
-     * - reduce(콜백함수, 초기값) : 초기값을 생략하면 배열의 첫번째 요소가 초기값이 된다.
+     * - reduce(콜백함수, 초기값) : 초기값을 생략하면 배열의 첫번째요소가 초기값이 된다.
      */
-
-    function test14(){
-        const arr= [1,2, 3,4, 5,6,7,8,9,10];
-        const sum = arr.reduce(function(agg, elem, index, arr) {
+     function test14(){
+        const arr = [1,2,3,4,5,6,7,8,9,10];
+        const sum = arr.reduce(function(agg, elem, index, arr){
             console.log(agg, elem, index, arr);
             return agg + elem;
         }, 0);
         console.log(sum);
 
+        const max = arr.reduce((max, elem) => {
+            return elem > max ? elem : max;
+        });
+        console.log(max);
+
         // map처럼 사용하기
-        const arr2 = arr.reduce(function(arr, elem) {
+        const arr2 = arr.reduce(function(arr, elem){
             console.log(arr, elem);
             arr.push(elem * elem);
             return arr;
         }, []);
         console.log(arr2);
 
-    }
-
-
+     }
     </script>
 
 </body>
