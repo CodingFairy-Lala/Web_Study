@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>DOM</h1>
+    <!-- 
+        Document Object Model
+        - document객체 하위에 작성한 모든 html태그가 계층구조로 저장됨.
+        - DOM tree
+        - 모든 태그객체는 Node, Element의 후손객체이다.
+     -->
+
+     <h2>Node | Element</h2>
+     <div id="sample">
+         <span>Hello world</span>
+         <!-- 주석 -->
+    </div>
+    <button onclick="test1();">실행</button>
+    <script>
+    /**
+     * Node
+     * - Text Node
+     * - Comment Node
+     * - Element Node
+     * 
+     * - firstChild | lastChild | childNodes | nextSibling | previousSibling | parentNode, ...
+     * - constains() | haschildNodes() | appendChild() | removeChild() | replaceChild() ...
+     * 
+     * Element
+     * - firstElementChild | lastElementChild | children | nextElementSibling | previousElementSibling | parentElement, ...
+     * - append() | prepend() | before() | after() | insertBefore() | insertAdjacentElement() | insertAdjacentHTML() | replaceChildren() ...
+     */
+    const test1 = () => {
+        console.dir(sample);
+        console.log(sample.childNodes);
+    };
+    </script>
+
+    <h2>동적 태그 생성</h2>
+    <button onclick="test2();">h2태그 생성</button>
+    <button onclick="test3();">img태그 생성</button>
+    <script>
+    /**
+     * <h2>안녕</h2>
+     */
+    const test2 = () => {
+        // document.body.innerHTML += "<h2>안녕</h2>";
+
+        const h2 = document.createElement("h2"); // <h2></h2>
+        const text = document.createTextNode("안녕"); // 안녕
+        h2.appendChild(text); // <h2>안녕</h2>
+        document.body.appendChild(h2);
+        
+        // 이벤트 핸들러 작성
+        h2.onclick = () => {
+            console.log('클릭!');
+        };
+
+        /**
+         * <img src="" alt=""/>
+         */
+    };
+    const test3 = () => {
+        const img = document.createElement("img"); // <img />
+        img.src = "../sample/image/hyunta.jpg";
+        img.alt = '현타견';
+        img.style = "width: 200px; margin: 10px; border-radius: 50%";
+        document.body.appendChild(img);
+    };
+    </script>
+
+    <h2>DOM Tree Traversing</h2>
+    <!-- div#foo>p#p${안녕$}*5 -->
+    <div id="foo">
+        <p id="p1">안녕1</p>
+        <p id="p2">안녕2</p>
+        <p id="p3">안녕3</p>
+        <p id="p4">안녕4</p>
+        <p id="p5">안녕5</p>
+    </div>
+    <button onclick="test4();">자식</button>
+    <button onclick="test5();">형제</button>
+    <button onclick="test6();">부모</button>
+    <button onclick="test7();">@실습문제</button>
+    <button onclick="test8();">요소추가 insertAdjacentElement</button>
+    <button onclick="test9();">요소추가 insertAdjacentHTML</button>
+    <script>
+    /**
+     * 자식방향
+     */
+    const test4 = () => {
+        console.log(foo.childNodes); // 자식노드
+        console.log(foo.children); // 자식 엘레먼트만
+        
+        console.log(foo.firstChild); // 텍스트노드
+        console.log(foo.firstElementChild); // #p1
+
+        console.log(foo.lastChild); // 텍스트노드
+        console.log(foo.lastElementChild); // #p1
+        // 지우기
+        // foo.innerHTML = "";
+        // foo.removeChild(document.querySelector("#p1"));
+        console.log(foo.removeChild(foo.firstChild)); 
+    };
+    /**
+     * 형제방향
+     */
+     const test5 = () => {
+        console.log(p3.nextSibling);
+        console.log(p3.nextElementSibling);
+        console.log(p3.previousSibling);
+        console.log(p3.previousElementSibling);
+        
+        p3.nextElementSibling.nextElementSibling.style.color = "salmon";
+    };
+    /**
+     * 부모방향
+     * - parentNode, parentElement 결과가 같다.
+     */
+     const test6 = () => {
+        console.log(p4.parentNode);
+        console.log(p4.parentElement);
+    };
+    /**
+     * #p3 에서 출발, 
+     * #p2 color : pink, 
+     * #p5 color : blue, 
+     * 부모요소 배경색 지정
+     * 모든 자식요소의 텍스트를 Hello1, Hello2, ... 로 바꾸기
+     */
+     const test7 = () => {
+        p3.previousElementSibling.style.color = "pink";
+        p3.nextElementSibling.nextElementSibling.style.color = "blue";
+        p3.parentElement.style.backgroundColor = "beige";   
+        console.log(p3.parentElement.children);
+        [...p3.parentElement.children].forEach((p, index) => {
+            console.log(p, index);
+            // p.innerHTML = "Hello" + (index + 1);
+
+            const text = document.createTextNode("Hello"+(index+1));
+            p.replaceChild(text, p.firstChild); // replaceChild(newChild, oldChild)
+        });
+    };
+
+    /**
+     * target.insertAdjacentElement(position, newElement)
+     * 
+     * - beforebegin 타겟시작태그 앞에 형제요소로 추가
+     * - afterbegin 타겟시작태그 뒤에 첫 자식요소로 추가
+     * - beforeend 타겟종료태그 앞에 마지막 자식요소로 추가
+     * - afterend 타겟종료태그 뒤에 형제요소로 추가
+     */
+    const test8 = () => {
+        const newElem = document.createElement("mark");
+        newElem.append(document.createTextNode("신입"));
+        
+        // p3.insertAdjacentElement('beforebegin', newElem);
+        p3.insertAdjacentElement('afterbegin', newElem);
+        // p3.insertAdjacentElement('beforeend', newElem);
+        // p3.insertAdjacentElement('afterend', newElem);
+    };
+
+    const test9 = () => {
+        const html = "<mark>신입</mark>";
+
+        // p3.insertAdjacentHTML('beforebegin', html);
+        // p3.insertAdjacentHTML('afterbegin', html);
+        // p3.insertAdjacentHTML('beforeend', html);
+        p3.insertAdjacentHTML('afterend', html);
+    };
+    </script>
+
+
+</body>
+</html>
