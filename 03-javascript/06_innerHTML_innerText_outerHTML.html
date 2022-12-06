@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML | innerText | outerHTML</title>
+</head>
+<body>
+    <h1>innerHTML | innerText | outerHTML</h1>
+    <div>
+        <p id="foo">안녕하세요, <mark>좋은 아침입니다.</mark></p>
+        <div id="area"></div>
+    </div>
+    <button onclick="test1();">innerHTML</button>
+    <button onclick="test2();">innerText</button>
+    <button onclick="test3();">outerHTML</button>
+    <script>
+    /**
+     * innerHTML
+     * - getter : 자식 html을 포함해서 반환.
+     * - setter : html태그 처리(계층구조 처리)
+     */
+    function test1(){
+        const foo = document.querySelector("#foo");
+        console.dir(foo);
+        console.log(foo.innerHTML); // getter
+
+        const area = document.querySelector("#area");
+        area.innerHTML = foo.innerHTML; // setter
+    }
+    /**
+     * innerText
+     * - getter : 자식 html을 제외한 텍스트부분 반환.
+     * - setter : html태그 처리안함.
+     */
+    function test2(){
+        console.log(foo); // #foo 태그 
+        console.log(foo.innerText);
+
+        area.innerText = foo.innerHTML;
+    }
+    /**
+     * outerHTML
+     * - getter : 태그자신을 포함해서 반환
+     * - setter : 태그자신을 대체.
+     */
+    function test3(){
+        console.log(foo.outerHTML);
+
+        foo.outerHTML = "<p id='bar'>좋은 하루 보내세요🍕</p>";
+    }
+    </script>
+</body>
+</html>
