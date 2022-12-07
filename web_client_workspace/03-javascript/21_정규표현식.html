@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <style>
+        .area {
+            background-color: lightblue;
+            border: 2px solid black;
+            padding : 5px;
+            margin: 10px 0;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>정규표현식</h1>
+    <!-- 
+        Regular expression
+        - 특정패턴을 가진 문자열에 대한 표현식.
+        - 유효성검사, 검색, 문자열 대체에 주로 사용.
+        - 언어 독립적. java, javascript, python...에 모두 사용가능
+        - 함축적인 문법이므로 복잡한 표현식에 대한 숙지가 관건.
+     -->
+    <button id="btn1">객체 생성</button>
+    <button id="btn2">주요메소드</button>
+    <button id="btn3">대체 문자</button>
+
+    <div class="area" id="area3"></div>
+
+    <script>
+    btn1.addEventListener('click', () => {
+        const re1 = new RegExp("[0-9]", "gi"); // 숫자 포함여부 정규표현식 객체
+        const re2 = /[0-9]/gi; // 정규표현식 객체 리터럴 생성
+        const re3 = new RegExp(/[0-9]/gi);;
+        
+        console.dir(re1);
+        console.dir(re1.test("abcde")); // false
+        console.dir(re1.test("abcde1")); // true
+        
+        console.dir(re2);
+        console.dir(re2.test("abcde")); // false
+        console.dir(re2.test("abcde1")); // true
+    });
+
+    /**
+     * 정규표현식
+     * - test
+     * - exec
+     * 
+     * String
+     * - search
+     * - match
+     * - split
+     * - replace
+     */
+    btn2.onclick = () => {
+        const re = /[0-9]/; 
+
+        // 정규식
+        // re.test(str):boolean
+        // 포함여부를 boolean으로 반환
+        console.log(re.test("abc")); // false
+        console.log(re.test("xyz123")); // true
+
+        // re.exec(str):[] 
+        // 만족하는 첫번째 값을 배열로 반환
+        console.log(re.exec("xyz123"));
+
+        // 문자열
+        // search(re):index
+        // 만족하는 값의 인덱스를 반환
+        console.log("xyz123".search(re)); // 3
+        
+        // match(re):[]
+        // 만족하는 첫번째 값을 배열로 반환
+        console.log("xyz123".match(re));
+        
+        // split(re):[]
+        // 정규식을 만족하는 값을 구분자로 나눈 값을 배열로 반환
+        console.log("x1y2z3".split(re)); // (4) ['x', 'y', 'z', '']
+        
+        // replace(re, newStr):string
+        // 정규식을 만족하는 첫번째 값을 새로운 문자열로 덮어써서 반환
+        console.log("xyz123".replace(re, "*"));
+    };
+
+    /**
+     * 대체문자
+     * - $& - 정규식에 일치하는 문자열
+     */
+    btn3.onclick = () => {
+        const str = "xyz123";
+        area3.innerHTML = `${str.replace(/[0-9]/, '<mark>$&</mark>')}`;
+    };
+
+    </script>
+    <div>
+        <button id="btn4">flag</button>
+        <div class="area" id="area4"></div>
+    </div>
+    <script>
+        /**
+         * flag 정규표현식 옵션
+         * - g global 전연비교수행. g가 없으면 매칭된 첫 건만 실행.
+         * - i ignore 영문자에서 대소문자를 구분하지 않고 비교.
+         * - m multiple line 여러줄 비교수행
+         */
+        btn4.onclick = () => {
+            const str = "Javascript jQuery Ajax sass";
+        
+            area4.innerHTML = `${str.replace(/a/, "<mark>$&</mark>")}<br>`;
+            area4.innerHTML += `${str.replace(/a/g, "<mark>$&</mark>")}<br>`;
+            area4.innerHTML += `${str.replace(/a/gi, "<mark>$&</mark>")}<br>`;
+        };
+    </script>
+
+    <button id="btn5">anchor</button>
+    <div class="area" id="area5"></div>
+    <script>
+    /**
+     * anchor
+     * - ^ 문자열의 시작
+     * - $ 문자열의 끝
+     */
+    btn5.onclick = () => {
+        const str = "Javascript jQuery xxx Ajax";
+
+        area5.innerHTML = `${str.replace(/^j/i, "<mark>$&</mark>")}<br/>`;
+        area5.innerHTML += `${str.replace(/x$/i, "<mark>$&</mark>")}<br/>`;
+
+        const str2 = `Javascript
+jQuery
+xxx
+Ajax`;
+        area5.innerHTML += `${str2.replace(/^j/img, "<mark>$&</mark>")}<br>`;
+        area5.innerHTML += `${str2.replace(/x$/img, "<mark>$&</mark>")}<br>`;
+    };
+    </script>
+    <button id="btn6">.</button>
+    <div class="area" id="are6"></div>
+
+    <script>
+    /**
+     * .
+     * - 임의의 한 글자를 의미
+     * - 문자, 공백, 특수문자도 포함
+     * - 개행문자는 해당되지 않음.
+     */
+    btn6.onclick = () => {
+        const re = /^a.b/;
+        console.log('acb', re.test('acb')); // true
+        console.log('acba', re.test('acba')); // true
+        console.log('aabb', re.test('aabb')); // true
+        console.log('ab', re.test('ab')); // false
+        console.log('a b', re.test('a b')); // true
+    
+        console.log(`a 
+b`, re.test(`a
+b`));     // false
+
+
+        // in다음 한글자가 나오고 끝나는 문자열검사
+        const re2 = /in.$/;
+        console.log(re2.test('going')); // true
+        console.log(re2.test('inner')); // false
+        console.log(re2.test('holidayin')); // false
+    };
+    </script>
+
+    <h2>@실습문제 - 주민번호 유효성검사</h2>
+    <fieldset>
+        <legend>주민번호</legend>
+        <input type="text" id="ssn" placeholder="예) 123456-1234567">
+        <button id="btn-ssn">확인</button>
+    </fieldset>
+    <script>
+    /**
+     * 주민번호자리수 유효성검사
+     * 
+     * - 올바른 주민번호 입니다.
+     * - 올바르지 않은 주민번호 입니다.
+     */
+    document.querySelector("#btn-ssn").onclick = () => {
+        const re = /^......-.......$/;
+
+        if(re.test(ssn.value)){
+            alert("올바른 주민번호 입니다.");
+        }
+        else {
+            alert("올바르지 않은 주민번호 입니다.");
+        }
+    };
+    </script>
+
+
+</body>
+</html>

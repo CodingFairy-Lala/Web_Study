@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료형</title>
+</head>
+<body>
+    <h1>자료형</h1>
+    <button onclick="test1();">Dynamic Typing</button>
+    <button onclick="test2();">Types</button>
+    
+    
+    
+    <script>
+        /**
+         * string
+         * number
+         * boolean
+         * object
+         * function
+         * undefined
+         * 
+         * let 변수 선언 - 값이 변하는 애들..
+         * const 상수 선언 (초기화 필수)
+         */
+         function test2() {
+            let str = "hello";
+            str = 'hello'
+            str = `hello`; // template string 백틱 (`);
+            console.log(typeof str, str); // string hello
+
+            let n = 10;
+            console.log(typeof n, n); // number 10
+
+            let bool = true;
+            bool = !bool;
+            console.log(typeof bool, bool); // boolean false
+
+            // obj는 속성값의 묶음이다.
+            let obj = {
+                id : 'honggd',
+                name : '홍길동',
+                age : 33
+            };
+            console.log(typeof obj, obj); // object {id: 'honggd', name: '홍길동', age: 33};
+
+            let arr = [1, 2, 3];
+            console.log(typeof arr, arr); // object (3) [1, 2, 3]
+
+            let f = function() {
+                console.log('fffffffffffffffffff');
+            }
+            console.log(typeof f, f); // function ƒ () {console.log('fffffffffffffffffff');}
+
+            let k;
+            console.log(typeof k, k); // undefined undefined
+
+
+         }
+
+        /**
+         * Dynamic Typing
+         * - 변수별로 타입이 지정되지 않고, 대입되는 값에 의해서 타입이 결정된다.
+         */
+        function test1() {
+            let a;
+            console.log(typeof a, a); // undefined undefined
+            a = 10;
+            console.log(typeof a, a); // number 10
+            a = '안녕';
+            console.log(typeof a, a); // string 안녕
+        }
+    </script>
+</body>
+</html>
