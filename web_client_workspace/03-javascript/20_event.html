@@ -131,6 +131,11 @@
         }
     });
     
+    /**
+     * submit을 막는 방법
+     * - onsubmit = () => { return false; }, (e) => {e.preventDefault();}
+     * - addEventListener('submit', (e) => {e.preventDefault(); });
+     */
     document.userSignupFrm.addEventListener('submit', (e) => {
         console.log(e);
         
