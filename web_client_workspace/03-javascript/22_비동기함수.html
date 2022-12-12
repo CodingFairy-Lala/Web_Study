@@ -368,7 +368,7 @@
            const img = document.createElement('img');
            img.src = avatar_url;
            document.querySelector(".avatar-wrapper").append(img);
-        //    img.onload = () => resolve; 
+           img.onload = () => resolve; 
         });
     };
     
