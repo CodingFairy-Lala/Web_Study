@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 선택자</title>
+    <script src="js/jquery-3.6.1.js"></script>
+</head>
+<body>
+    <h1>jQuery 선택자</h1>
+    <div>
+        <p class="group1" id="p1">안녕1</p> 
+        <p class="group2" id="p2" title="안녕222222">안녕2</p>
+        <p class="group1" id="p3">안녕3</p>
+        <p class="group2" id="p4">안녕4</p>
+        <p class="group1 group2" id="p5">안녕5</p>
+    </div>
+    <button id="btn1">기본선택자</button>
+    <script>
+        btn1.addEventListener("click", () => {
+            // jQuery객체는 변수명 $로 시작!
+            // const $p = $("p");
+            // console.log($p);
+            // $p.css("color", "tomato");
+            $("p").css("color", "tomato");
+
+            const p = document.querySelectorAll("p").forEach((p) => {
+                p.style.color = 'tomato';
+            });
+
+            // id가 p3인 요소에 대해 배경색 지정
+            // $("#p3").css("background-color", "beige");
+            $("#p3").css("backgroundColor", "beige");
+            
+            // class가 group1인 요소에 대해 글자크기 1.5배 지정
+            $(".group1").css("font-size", "1.5em")
+            // class가 group1, group2인 요소에 대해 밑줄 효과 지정
+            $(".group1.group2").css("text-decoration", "underline")
+            // title속성이 있는 요소에 대해서 이탤릭체 효과 지정
+            $("[title]").css("font-style", "italic")
+
+        });
+
+    </script>
+
+</body>
+</html>
